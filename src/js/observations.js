@@ -1,11 +1,4 @@
-// An iNaturalist observation Object contains a tremendous amount of data, much of
-// it not useful in our current program. We need to transform these Observation
-// objects into a new format that matches our needs.
-//
-// Here's a simplified version of the current structure of an observation Object
-// (see src/data.js for a complete example of what it looks like). Many of the
-// properties and values have been removed to highlight the ones we do
-// care about:
+//original data:
 //
 // {
 //   id: 67868131,
@@ -39,8 +32,7 @@
 //   }
 // },
 //
-// Here's the same data transformed into a simpler format we want to use:
-//
+//transformed data:
 // {
 //   id: 67868131,
 //   uri: "https://www.inaturalist.org/observations/67868131",
@@ -55,9 +47,7 @@
 //   isThreatened: false
 // }
 
-// Given a string, convert the first letter of each word in the
-// string to a capital letter. For example, convert 'muskrat' to
-// 'Muskrat', and 'bittersweet nightshade' to 'Bittersweet Nightshade'
+// Convert the first letter of each word in the string to a capital letter. 
 function titleCase(s) {
   return s
     .split(" ")
@@ -65,8 +55,7 @@ function titleCase(s) {
     .join(" ");
 }
 
-// Given an Array of iNaturalist observation objects, transform the objects into
-// our desired format, and return the new Array. For example:
+// Transform the iNaturalist objects into the desired format:
 //​
 // [
 //   {
@@ -85,10 +74,7 @@ function titleCase(s) {
 //   ...
 // ]
 //
-// Things to note in your solution:
-//
-// - id: use the same value unmodified
-// - uri: use the same value unmodified
+
 // - coords: extract the array of [lng, lat] values from the geojson property
 // - date: convert the created_at string property to a real JavaScript Date
 // - name: use either the taxon's preferred_common_name or name property, converted to Title Case
@@ -116,7 +102,7 @@ function transformObservations(observations) {
   }));
 }
 
-// Take the array of observations and filter out any observations that haven't
+// Filter out any observations that haven't
 // been identified yet (i.e., are missing the `taxon` property) and/or don't have
 // a photo (i.e., are missing the `taxon.default_photo` property).
 function filterObservations(observations) {
@@ -125,22 +111,20 @@ function filterObservations(observations) {
   );
 }
 
-// Process all observation data in the window.data.results array (see data.js)
-// to a simpler format we can work with, and filter the observations to get
-// rid of any that are missing data that we need.
+// Process all observation data 
 function getAllObservations() {
   const filtered = filterObservations(data.results);
   const transformed = transformObservations(filtered);
   return transformed;
 }
 
-// Given an array of observations, filter out any that aren't native species
+// Filter out any that aren't native species
 // and return the filtered array.
 function filterOnlyNative(observations) {
   return observations.filter((observation) => observation.isNative);
 }
 
-// Given an array of observations, filter out any that aren't introduced species
+// Filter out any that aren't introduced species
 // and return the filtered array.
 function filterOnlyIntroduced(observations) {
   return observations.filter((observation) => observation.isIntroduced);

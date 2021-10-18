@@ -11,8 +11,12 @@
     width:210px;
 }
 .ObservationLong{
-    width:500px;
+    width:80%;
 }
 #ObservationLicense{
-    width:520px;
+    width:80%;
+}
+
+textarea{
+    width:80%;
 }

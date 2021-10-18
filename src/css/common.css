@@ -2,10 +2,14 @@
  * Some common styles used across all pages
  */
 
-nav {
-  display: flex;
-}
+.h1{
+  
+  @media (min-width: 576px) {
+    font-size:0.3em;
+  } 
 
-a {
-  width: 140px;
+  @media (min-width: 992px){
+    font-size:1em;
+
+  }
 }

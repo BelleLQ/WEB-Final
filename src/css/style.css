@@ -20,6 +20,7 @@
     color: white;
     text-align: center;
     font-style: italic;
+    font-size: 1.5vw;
 }
 
 
@@ -40,6 +41,12 @@
 .buttons {
     text-align: center;
     margin: 2em;
+}
+
+#observations button{
+    padding: 0;
+    width: 100%;
+    height: 40px;
 }
 
 .buttons>button:hover {
@@ -134,19 +141,25 @@ footer {
  */
 
  #search input[type=address]{
-     width: 650px;
+     width: 100%;
  }
  #search button{
-    width: 120px;
+    width: 100%;
     padding: 0px;
     padding-top:3px;
-
+    height:39px;
+    font-size: 0.9em;
 } 
 #searchlabel{
     padding-left: 2px;
 }
-#search span{
-    display: inline-flex;
-    height: 35px;
-    font-size: 13px;
+
+#search .col-10{
+    padding: 0;
+}
+#search .col-2{
+    padding: 0;
+
+    padding-left: 2px;
+
 }
